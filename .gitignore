@@ -1,0 +1,13 @@
+# PlatformIO
+.pio/
+# Python
+__pycache__/
+.venv/
+# KiCad backups and local files
+*-backups/
+*.kicad_prl
+fp-info-cache
+_render-*.html
+_schematic.html
+# SDR recordings are large; keep them out of the repo
+*.wav

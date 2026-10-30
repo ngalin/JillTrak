@@ -1,0 +1,10 @@
+Quantity,Manufacturer,Manufacturer Part Number,Digi-Key Part Number,Description,Customer Reference
+7,Standex-Meder,MK24-B-2,374-1135-1-ND,"Reed switch SMD, SPST-NO (SW1, not fitted by JLCPCB); 5 boards + 2 spares",SW1
+10,Murata,GRM1885C1H102JA01D,,"1 nF C0G 50V 0603, tank trim (C1T), lowers carrier ~0.5%",C1T
+10,Murata,GRM1885C1H222JA01D,,"2.2 nF C0G 50V 0603, tank trim (C1T), lowers carrier ~1.1%",C1T
+10,Murata,GRM1885C1H472JA01D,490-9669-1-ND,"4.7 nF C0G 50V 0603, tank trim (C1T), lowers carrier ~2.3%",C1T
+10,Murata,GRM1885C1H103JA01D,490-9666-1-ND,"10 nF C0G 50V 0603, tank trim (C1T), lowers carrier ~4.6%",C1T
+12,Murata,SR1154SW,,"SR44 / 357 silver oxide cell 1.55V, 2 per collar; 5 collars + 2 spares (or buy locally, SR44 NOT LR44)",BT
+1,Wurth Elektronik,354005,,"Flexible ferrite sheet WE-FSFS 60x60x0.28 mm, for wireless power (Qi): wrap round the cells",ferrite
+1,Remington Industries,30SNSP.125,,"Magnet wire 30 AWG (0.25 mm) solderable polyurethane, 123 m: coil, and temporary programming leads",L
+1,Sullins,PRPC040SAAN-RC,S1011EC-40-ND,"Break-away male header 40 pin, gold: pins for the centre negative contact (BT2)",BT2

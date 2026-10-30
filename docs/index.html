@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JillTrak</title>
+<meta name="description" content="An open-source replacement for the Deben ferret-finder collar transmitter, heard by the existing Deben receivers.">
+<style>
+:root {
+  color-scheme: light;
+  --bg: #fcfcfb; --surface: #f3f2ef; --border: #e4e3df;
+  --ink: #1a1a19; --ink-2: #52514e; --ink-3: #7a7974;
+  --accent: #2a78d6; --accent-2: #eb6834;
+  --measure: 46rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #1a1a19; --surface: #242422; --border: #3a3a37;
+    --ink: #f0efec; --ink-2: #c3c2b7; --ink-3: #9a998f;
+    --accent: #5a9cec; --accent-2: #e8763f;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #1a1a19; --surface: #242422; --border: #3a3a37;
+  --ink: #f0efec; --ink-2: #c3c2b7; --ink-3: #9a998f;
+  --accent: #5a9cec; --accent-2: #e8763f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+main { max-width: var(--measure); margin: 0 auto; padding: 3rem 16px 4rem; }
+header { margin-bottom: 2.5rem; }
+.kicker { color: var(--accent-2); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; font-size: .8rem; margin: 0; }
+h1 { font-size: 2.6rem; line-height: 1.1; margin: .3rem 0 .8rem; letter-spacing: -.02em; }
+.lede { font-size: 1.2rem; color: var(--ink-2); margin: 0; }
+h2 { font-size: 1.45rem; margin: 3rem 0 .8rem; letter-spacing: -.01em; }
+h3 { font-size: 1.1rem; margin: 1.8rem 0 .4rem; }
+p, li { color: var(--ink); }
+a { color: var(--accent); }
+figure { margin: 1.5rem 0; }
+figure img { width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border); background: #fcfcfb; display: block; }
+figure.narrow img { max-width: 20rem; margin: 0 auto; }
+figure.narrow figcaption { text-align: center; }
+figcaption { font-size: .88rem; color: var(--ink-3); margin-top: .5rem; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 12px; margin: 1.5rem 0; }
+.stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+.stat b { display: block; font-size: 1.5rem; font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+.stat span { font-size: .85rem; color: var(--ink-2); }
+.table-wrap { overflow-x: auto; margin: 1.2rem 0; }
+table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { color: var(--ink-2); font-weight: 600; }
+.callout { background: var(--surface); border-left: 3px solid var(--accent-2); border-radius: 6px; padding: 14px 18px; margin: 1.5rem 0; }
+.steps { counter-reset: s; list-style: none; padding: 0; }
+.steps li { counter-increment: s; position: relative; padding-left: 2.4rem; margin: .9rem 0; }
+.steps li::before { content: counter(s); position: absolute; left: 0; top: .05rem; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; font-size: .9rem; display: grid; place-items: center; }
+.contact { font-size: 1.1rem; }
+footer { margin-top: 3.5rem; padding-top: 1.2rem; border-top: 1px solid var(--border); font-size: .85rem; color: var(--ink-3); }
+@media (max-width: 520px) { h1 { font-size: 2.1rem; } body { font-size: 16px; } }
+</style>
+</head>
+<body>
+<main>
+
+<header>
+  <p class="kicker">Open-source ferret finder collar</p>
+  <h1>JillTrak</h1>
+  <p class="lede">A replacement collar transmitter for Deben ferret finders. It works with the Deben receivers people already have, and everything you need to make one is free to use.</p>
+</header>
+
+<figure>
+  <img src="img/deben_and_jilltrak.jpg" alt="A worn black Deben collar transmitter next to a pink and orange 3D-printed JillTrak case with strap slots and an engraved G logo.">
+  <figcaption>An original Deben collar (left) and one of ours (right).</figcaption>
+</figure>
+
+<h2>Why we made it</h2>
+<p>Lots of ferreters use Deben finders. The collar goes on the ferret, and the handheld receiver tells you where it is underground and how deep. Deben has closed down and you can't buy new collars any more, so if you lose one down a hole, that's it.</p>
+<p>So we measured a working Deben collar, built our own to match it, and put the design online for anyone to use.</p>
+
+<h2>What the Deben sends</h2>
+<p>We recorded a Deben collar with a software-defined radio. It sends short bursts of a 149&nbsp;kHz signal, about five times a second.</p>
+
+<div class="stats">
+  <div class="stat"><b>149.1 kHz</b><span>frequency</span></div>
+  <div class="stat"><b>11.1 ms</b><span>each burst</span></div>
+  <div class="stat"><b>184 ms</b><span>between bursts</span></div>
+  <div class="stat"><b>2 × SR936</b><span>cells, 3.1 V</span></div>
+</div>
+
+<figure>
+  <img src="img/packet_timing.png" alt="Signal over 0.8 seconds: the Deben and JillTrak each send an 11 millisecond burst about every 184 milliseconds.">
+  <figcaption>Bursts from the Deben (orange) and ours (blue), recorded in the same setup.</figcaption>
+</figure>
+
+<p>At this frequency the receiver picks up the coil's magnetic field rather than radio waves, a bit like a metal detector. Soil and rock hardly affect it. The field gets weaker with the cube of the distance, which is how the receiver works out depth.</p>
+
+<p>The Deben's frequency isn't fixed. During each burst it climbs from about 147.9 to 149.3&nbsp;kHz and drifts back to 148.7&nbsp;kHz, exactly the same way every time. That points to a simple analog circuit, probably built around 555 timers. It also means the receiver accepts a range of frequencies, so ours doesn't have to match the Deben's exactly.</p>
+
+<figure>
+  <img src="img/frequency_within_burst.png" alt="Two panels of frequency against time within a burst. The Deben's 55 bursts lie on one curved line from 147.9 up to 149.3 and down to 148.7 kilohertz. JillTrak's 38 bursts are each roughly flat near 149.4 to 149.8 kilohertz but scatter from burst to burst.">
+  <figcaption>Frequency during each burst, all bursts drawn on top of each other. The Deben sweeps but repeats exactly. Ours stays flat but varies a little from one burst to the next.</figcaption>
+</figure>
+
+<p>There's more detail in the <a href="https://github.com/ngalin/JillTrak/tree/main/background">background</a> section.</p>
+
+<h2>How ours compares</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th></th><th>Deben</th><th>JillTrak</th></tr></thead>
+  <tbody>
+    <tr><td>Frequency</td><td>about 149.1&nbsp;kHz, sweeps within each burst</td><td>about 149.1&nbsp;kHz, set for each board</td></tr>
+    <tr><td>Bursts</td><td>11.1&nbsp;ms, every 184&nbsp;ms or so</td><td>the same</td></tr>
+    <tr><td>Signal strength</td><td></td><td>within about 1&nbsp;dB of the Deben</td></tr>
+    <tr><td>Strength during a burst</td><td>stays level</td><td>fades slightly (we're working on this)</td></tr>
+    <tr><td>Coil</td><td>on a ferrite tube</td><td>19 turns on a 23&nbsp;mm printed former</td></tr>
+    <tr><td>On and off</td><td>magnet</td><td>magnet, one swipe on, one swipe off</td></tr>
+    <tr><td>Case</td><td>two threaded halves, strap through both</td><td>the same idea, 3D printed, with an O-ring seal</td></tr>
+  </tbody>
+</table>
+</div>
+
+<figure class="narrow">
+  <img src="img/tx-kick-top.png" alt="Render of the 20 millimetre round circuit board, component side.">
+  <figcaption>Our 20&nbsp;mm circuit board. JLCPCB fits most of the parts, and you solder on the reed switch, battery pins and coil.</figcaption>
+</figure>
+
+<figure>
+  <img src="img/jilltrak_parts.jpg" alt="Printed JillTrak parts on a cutting mat: the back half with a strap channel, the front half with the logo, the round insert with the green circuit board fitted, and two button cells.">
+  <figcaption>The back half, the front half, the insert with the board in it, and two SR936 cells. The grid is 10&nbsp;mm.</figcaption>
+</figure>
+
+<h2>Where it's at</h2>
+<p>Our transmitter matches the Deben's frequency, timing and signal strength. The circuit board works and is ready to order, and the 3D-printed case works, though we're still fixing a few fit problems.</p>
+<p>We're working on two things in the firmware. The first is keeping the signal at the same strength all the way through each burst, like the Deben does. The second is a new version that runs on a single CR1632 cell, which would make the case much simpler to build. On a bench supply it keeps transmitting down to 1.9&nbsp;V.</p>
+<p>We still need to do proper range and depth tests with a Deben receiver.</p>
+
+<figure>
+  <img src="img/supply_sweep.png" alt="Two panels against supply voltage from 3.1 down to 1.9 volts. Signal strength is flat to 2.6 volts and about 4 decibels lower at 1.9 volts. Frequency stays near 149.1 kilohertz to 2.6 volts and falls to 148.0 kilohertz at 1.9 volts, inside the shaded band of the Deben's own sweep.">
+  <figcaption>The new firmware on a bench supply. It keeps going at 1.9&nbsp;V, and the frequency stays inside the Deben's own range.</figcaption>
+</figure>
+
+<h2>Make your own</h2>
+<ol class="steps">
+  <li>Order the circuit board from JLCPCB. The files are in <a href="https://github.com/ngalin/JillTrak/tree/main/hardware/pcb">hardware/pcb</a>.</li>
+  <li>Program it with an Arduino Uno. See <a href="https://github.com/ngalin/JillTrak/tree/main/Firmware">Firmware</a>.</li>
+  <li>Print the case, wind the coil and put it together. See <a href="https://github.com/ngalin/JillTrak/tree/main/hardware/enclosure">hardware/enclosure</a>.</li>
+</ol>
+<p>You'll need to be comfortable soldering tiny parts and fine wire, and you'll need an SDR or a Deben receiver to check each board's frequency.</p>
+
+<div class="callout">
+  <p class="contact"><strong>Want one made for you?</strong><br>Email natalia at galinengine dot com. They cost about US$200.</p>
+</div>
+<p>If you'd like to support the project, you can <a href="https://github.com/ngalin/JillTrak/blob/main/DONATE.md">donate here</a>.</p>
+
+<footer>
+  <p>Firmware and tools: MIT. Hardware: CERN-OHL-P v2. Documentation: CC BY 4.0. Source: <a href="https://github.com/ngalin/JillTrak">github.com/ngalin/JillTrak</a>.</p>
+  <p>We're not connected to Deben in any way. We only use the name to say what this works with.</p>
+</footer>
+
+</main>
+</body>
+</html>

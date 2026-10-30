@@ -1,0 +1,4 @@
+# Shows the "Sponsor" button on the repository page.
+# GitHub only accepts links under `custom:`, not bare wallet addresses,
+# so the button points to DONATE.md, which lists the addresses.
+custom: ["https://github.com/ngalin/JillTrak/blob/main/DONATE.md"]
