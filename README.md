@@ -16,7 +16,7 @@ and put everything here so anyone can make one.
 If you'd like us to make one for you, email natalia at galinengine dot com.
 They cost about US$200.
 
-If you want to support the project, you can [donate here](DONATE.md).
+If you want to support the project, you can [donate here](https://buy.stripe.com/eVq6oJ85U8Ir4Zu3Ao4sE00).
 
 ## Where it's at (October 2026)
 
